@@ -30,36 +30,39 @@ function getRandomInt(min, max) {
 } 
 		/** turn random value into choice */
 
-let computerChoice = (getRandomInt(1,4))
+let computerPlay = (getRandomInt(1,4))
 			/** 1 = Rock 2 = Paper 3 = Scissors */
-if (computerChoice === 1) {
+if (computerPlay === 1) {
 	alert('Computer chose Rock!');
-	} else if (computerChoice === 2) {
+	} else if (computerPlay === 2) {
 	alert('Computer chose Paper!');
-	} else if (computerChoice === 3) {
+	} else if (computerPlay === 3) {
 	alert('Computer chose Scissors!');
     }
-console.log(computerChoice)
+console.log(computerPlay)
 
 	
 /** Result */ 
 	/** Compare outputs */
-if ((userChoice === 'rock') && (computerChoice === 3)) {
-	alert('You chose Rock and computer chose Scissors. You win! ');
-} else if (userChoice === 'rock' && computerChoice === 2) {
-	alert('You chose Rock and computer chose Paper. You loose! :(');
-} else if (userChoice === 'rock' && computerChoice === 1) {
-	alert('You chose Rock and computer chose Rock. It\'s a tie!');
-} else if (userChoice === 'paper' && computerChoice === 3) {
-	alert('You chose Paper and computer chose Scissors. You loose! :(');
-} else if (userChoice === 'paper' && computerChoice === 2) {
-	alert('You chose Paper and computer chose Paper. It\'s a tie!');
-} else if (userChoice === 'paper' && computerChoice === 1) {
-	alert('You chose Paper and computer chose Rock. You win!');
-} else if (userChoice === 'scissor' && computerChoice === 3) {
-	alert('You chose Scissors and computer chose Scissors. It\'s a tie!');
-} else if (userChoice === 'scissor' && computerChoice === 2) {
-	alert('You chose Scissors and computer chose Paper. You win!');
-} else if (userChoice === 'scissor' && computerChoice === 1) {
-	alert('You chose Scissors and computer chose Rock. You loose! -.-');
+function game(userChoice, computerPlay) {
+	if ((userChoice === 'rock') && (computerPlay === 3)) {
+		alert('You chose Rock and computer chose Scissors. You win! ');
+	} else if (userChoice === 'rock' && computerPlay === 2) {
+		alert('You chose Rock and computer chose Paper. You loose! :(');
+	} else if (userChoice === 'rock' && computerPlay === 1) {
+		alert('You chose Rock and computer chose Rock. It\'s a tie!');
+	} else if (userChoice === 'paper' && computerPlay === 3) {
+		alert('You chose Paper and computer chose Scissors. You loose! :(');
+	} else if (userChoice === 'paper' && computerPlay === 2) {
+		alert('You chose Paper and computer chose Paper. It\'s a tie!');
+	} else if (userChoice === 'paper' && computerPlay === 1) {
+		alert('You chose Paper and computer chose Rock. You win!');
+	} else if (userChoice === 'scissor' && computerPlay === 3) {
+		alert('You chose Scissors and computer chose Scissors. It\'s a tie!');
+	} else if (userChoice === 'scissor' && computerPlay === 2) {
+		alert('You chose Scissors and computer chose Paper. You win!');
+	} else if (userChoice === 'scissor' && computerPlay === 1) {
+		alert('You chose Scissors and computer chose Rock. You loose! -.-');
+	}
 }
+game(userChoice, computerPlay)
