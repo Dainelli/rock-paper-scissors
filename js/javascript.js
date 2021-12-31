@@ -44,24 +44,22 @@ console.log(computerChoice)
 	
 /** Result */ 
 	/** Compare outputs */
-if (userChoice === 'rock') && (computerChoice === 3) {
+if ((userChoice === 'rock') && (computerChoice === 3)) {
 	alert('You chose Rock and computer chose Scissors. You win! ');
-} else if userChoice === 'rock' && computerChoice === 2 {
+} else if (userChoice === 'rock' && computerChoice === 2) {
 	alert('You chose Rock and computer chose Paper. You loose! :(');
-} else if userChoice === 'rock' && computerChoice === 1 {
+} else if (userChoice === 'rock' && computerChoice === 1) {
 	alert('You chose Rock and computer chose Rock. It\'s a tie!');
-} else if userChoice === 'paper' && computerChoice === 3 {
+} else if (userChoice === 'paper' && computerChoice === 3) {
 	alert('You chose Paper and computer chose Scissors. You loose! :(');
-} else if userChoice === 'paper' && computerChoice === 2 {
+} else if (userChoice === 'paper' && computerChoice === 2) {
 	alert('You chose Paper and computer chose Paper. It\'s a tie!');
-} else if userChoice === 'paper' && computerChoice === 1 {
+} else if (userChoice === 'paper' && computerChoice === 1) {
 	alert('You chose Paper and computer chose Rock. You win!');
-} else if userChoice === 'scissor' && computerChoice === 3 {
+} else if (userChoice === 'scissor' && computerChoice === 3) {
 	alert('You chose Scissors and computer chose Scissors. It\'s a tie!');
-} else if userChoice === 'scissor' && computerChoice === 2 {
+} else if (userChoice === 'scissor' && computerChoice === 2) {
 	alert('You chose Scissors and computer chose Paper. You win!');
-} else if userChoice === 'scissor' && computerChoice === 1 {
+} else if (userChoice === 'scissor' && computerChoice === 1) {
 	alert('You chose Scissors and computer chose Rock. You loose! -.-');
-
-	/** Define winner */
-	/** Print winner */
+}
