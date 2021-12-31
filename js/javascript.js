@@ -66,3 +66,10 @@ function game(userChoice, computerPlay) {
 	}
 }
 game(userChoice, computerPlay)
+
+/**
+while(i=1, i<=5, i++){
+
+	game(userChoice, computerPlay)
+}
+*/
