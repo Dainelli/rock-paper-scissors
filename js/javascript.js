@@ -1,75 +1,88 @@
-/** Input from user */
-	/** ask for input */
-let userPrompt = window.prompt("Make your choice: Rock, Paper or Scissors?");
-/** convert string to lower case*/
-let userChoice = userPrompt.toLowerCase()
-  	/** Check for proper input 
-if ((userChoice != 'rock') || (userChoice != 'paper') || (userChoice != 'scissors')) {
-  	userChoice = window.prompt("You chose a wrong option. Try again! The options are Rock, Paper or Scissors.")
-  }*/
-	/** Confirm user choice */
-if (userChoice === 'rock') {
-    alert('You chose Rock!');
-  } else if (userChoice === 'paper') {
-    alert('You chose Paper!');
-  } else if (userChoice === 'scissors') {
-    alert('You chose Scissors!');
+const computerChoiceDisplay = document.getElementById("computer-choice");
+const userChoiceDisplay = document.getElementById("user-choice");
+const resultDisplay = document.getElementById("result");
+const possibleChoices = document.querySelectorAll("button");
+let userChoice;
+let computerChoice;
+let result;
+let userScore;
+let computerScore;
+
+possibleChoices.forEach((possibleChoice) =>
+  possibleChoice.addEventListener("click", (e) => {
+    userChoice = e.target.id;
+    userChoiceDisplay.innerHTML = userChoice;
+    generateComputerChoice();
+    getResult();
+  })
+);
+
+function generateComputerChoice() {
+  const randomNumber = Math.floor(Math.random() * 3) + 1; // or you can use possibleChoices.length
+
+  if (randomNumber === 1) {
+    computerChoice = "rock";
+  }
+  if (randomNumber === 2) {
+    computerChoice = "scissors";
+  }
+  if (randomNumber === 3) {
+    computerChoice = "paper";
+  }
+  computerChoiceDisplay.innerHTML = computerChoice;
+}
+
+function getResult() {
+  if (computerChoice === userChoice) {
+    result = "It's a tie!";
+  }
+  if (computerChoice === "rock") {
+    if (userChoice === "paper") {
+      result = "You win!";
+    } else {
+      result = "You lose!";
+    }
+  } else if (computerChoice === "paper") {
+    if (userChoice === "scissors") {
+      result = "You win!";
+    } else {
+      result = "You lose!";
+    }
+  } else if (computerChoice === "scissors") {
+    if (userChoice === "rock") {
+      result = "You win!";
+    } else {
+      result = "You lose!";
+    }
   } else {
-  	alert('That is not a viable option. Try again!');
+    result = "Something went wrong!";
+  } // end of else
+  resultDisplay.innerHTML = result;
+}
+// display running score
+const userScoreDisplay = document.getElementById("user-score");
+const computerScoreDisplay = document.getElementById("computer-score");
+
+function score() {
+  if ((result = "You win!")) {
+    userScore++;
+    console.log(userScore);
   }
 
-
-console.log(userChoice)
-/** Conputer output */
-	/** random choice */
-		/** Get random value */
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-} 
-		/** turn random value into choice */
-
-let computerPlay = (getRandomInt(1,4))
-			/** 1 = Rock 2 = Paper 3 = Scissors */
-if (computerPlay === 1) {
-	alert('Computer chose Rock!');
-	} else if (computerPlay === 2) {
-	alert('Computer chose Paper!');
-	} else if (computerPlay === 3) {
-	alert('Computer chose Scissors!');
-    }
-console.log(computerPlay)
-
-	
-/** Result */ 
-	/** Compare outputs */
-function game(userChoice, computerPlay) {
-	if ((userChoice === 'rock') && (computerPlay === 3)) {
-		alert('You chose Rock and computer chose Scissors. You win! ');
-	} else if (userChoice === 'rock' && computerPlay === 2) {
-		alert('You chose Rock and computer chose Paper. You loose! :(');
-	} else if (userChoice === 'rock' && computerPlay === 1) {
-		alert('You chose Rock and computer chose Rock. It\'s a tie!');
-	} else if (userChoice === 'paper' && computerPlay === 3) {
-		alert('You chose Paper and computer chose Scissors. You loose! :(');
-	} else if (userChoice === 'paper' && computerPlay === 2) {
-		alert('You chose Paper and computer chose Paper. It\'s a tie!');
-	} else if (userChoice === 'paper' && computerPlay === 1) {
-		alert('You chose Paper and computer chose Rock. You win!');
-	} else if (userChoice === 'scissor' && computerPlay === 3) {
-		alert('You chose Scissors and computer chose Scissors. It\'s a tie!');
-	} else if (userChoice === 'scissor' && computerPlay === 2) {
-		alert('You chose Scissors and computer chose Paper. You win!');
-	} else if (userChoice === 'scissor' && computerPlay === 1) {
-		alert('You chose Scissors and computer chose Rock. You loose! -.-');
-	}
+  if ((result = "You lose!")) {
+    computerScore++;
+    console.log(computerScore);
+  }
 }
-game(userChoice, computerPlay)
 
-/**
-while(i=1, i<=5, i++){
-
-	game(userChoice, computerPlay)
+function displayScore() {
+  userScoreDisplay.innerHTML = userScore;
+  computerScoreDisplay.innerHTML = computerScore;
+  score();
 }
-*/
+
+function resetScore() {
+  userScore = 0;
+  computerScore = 0;
+  displayScore();
+}
