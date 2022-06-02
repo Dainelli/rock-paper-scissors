@@ -5,8 +5,8 @@ const possibleChoices = document.querySelectorAll("button");
 let userChoice;
 let computerChoice;
 let result;
-let userScore;
-let computerScore;
+let userScore = 0;
+let computerScore = 0;
 
 possibleChoices.forEach((possibleChoice) =>
   possibleChoice.addEventListener("click", (e) => {
@@ -14,6 +14,8 @@ possibleChoices.forEach((possibleChoice) =>
     userChoiceDisplay.innerHTML = userChoice;
     generateComputerChoice();
     getResult();
+    resetScore();
+    displayResult();
   })
 );
 
@@ -39,50 +41,62 @@ function getResult() {
   if (computerChoice === "rock") {
     if (userChoice === "paper") {
       result = "You win!";
+      userScore += 1;
+      userScoreDisplay.innerHTML = userScore;
     } else {
       result = "You lose!";
+      computerScore += 1;
+      computerScoreDisplay.innerHTML = computerScore;
     }
   } else if (computerChoice === "paper") {
     if (userChoice === "scissors") {
       result = "You win!";
+      userScore += 1;
+      userScoreDisplay.innerHTML = userScore;
     } else {
       result = "You lose!";
+      computerScore += 1;
+      computerScoreDisplay.innerHTML = computerScore;
     }
   } else if (computerChoice === "scissors") {
     if (userChoice === "rock") {
       result = "You win!";
+      userScore += 1;
+      userScoreDisplay.innerHTML = userScore;
     } else {
       result = "You lose!";
+      computerScore += 1;
+      computerScoreDisplay.innerHTML = computerScore;
     }
   } else {
     result = "Something went wrong!";
   } // end of else
-  resultDisplay.innerHTML = result;
+  resetScore();
 }
 // display running score
 const userScoreDisplay = document.getElementById("user-score");
 const computerScoreDisplay = document.getElementById("computer-score");
 
-function score() {
-  if ((result = "You win!")) {
-    userScore++;
-    console.log(userScore);
-  }
-
-  if ((result = "You lose!")) {
-    computerScore++;
-    console.log(computerScore);
-  }
-}
-
-function displayScore() {
+// display score
+displayScore(() => {
   userScoreDisplay.innerHTML = userScore;
   computerScoreDisplay.innerHTML = computerScore;
-  score();
+});
+
+//reset score
+function resetScore() {
+  if (userScore == 5) {
+    userScore = 0;
+    computerScore = 0;
+    displayScore();
+  } else if (computerScore == 5) {
+    userScore = 0;
+    computerScore = 0;
+    displayScore();
+  }
 }
 
-function resetScore() {
-  userScore = 0;
-  computerScore = 0;
-  displayScore();
+//Congratulate the winner
+function displayResult() {
+  resultDisplay.innerHTML = result;
 }
