@@ -2,6 +2,7 @@ const computerChoiceDisplay = document.getElementById("computer-choice");
 const userChoiceDisplay = document.getElementById("user-choice");
 const resultDisplay = document.getElementById("result");
 const possibleChoices = document.querySelectorAll("button");
+const winnerDisplay = document.getElementById("winner");
 let userChoice;
 let computerChoice;
 let result;
@@ -71,17 +72,16 @@ function getResult() {
   } else {
     result = "Something went wrong!";
   } // end of else
-  resetScore();
 }
 // display running score
 const userScoreDisplay = document.getElementById("user-score");
 const computerScoreDisplay = document.getElementById("computer-score");
 
 // display score
-displayScore(() => {
+function displayScore() {
   userScoreDisplay.innerHTML = userScore;
   computerScoreDisplay.innerHTML = computerScore;
-});
+}
 
 //reset score
 function resetScore() {
@@ -89,10 +89,14 @@ function resetScore() {
     userScore = 0;
     computerScore = 0;
     displayScore();
+    console.log("you win the game");
+    winnerDisplay.innerHTML = "You won!";
   } else if (computerScore == 5) {
     userScore = 0;
     computerScore = 0;
     displayScore();
+    console.log("you lose the game");
+    winnerDisplay.innerHTML = "You lost!";
   }
 }
 
